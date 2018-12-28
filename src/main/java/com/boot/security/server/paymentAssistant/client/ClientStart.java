@@ -13,7 +13,7 @@ public class ClientStart {
         Client bootstrap = new Client(8084, "175.6.101.244");
 
         while (true) {
-            System.out.println("向服务端发起PING");
+            System.out.println("向服务端发起PING..........");
             try {
                 TimeUnit.SECONDS.sleep(3);
             } catch (InterruptedException e) {
