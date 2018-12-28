@@ -1,0 +1,123 @@
+2018-12-25 10:12:15,984 [http-nio-8083-exec-1] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:12:15,995 [http-nio-8083-exec-1] ==> Parameters: 4464625d-13c4-454e-b58e-961661fe0708(String)
+2018-12-25 10:12:16,009 [http-nio-8083-exec-1] <==      Total: 1
+2018-12-25 10:12:20,894 [http-nio-8083-exec-2] ==>  Preparing: select * from sys_user t where t.username = ? 
+2018-12-25 10:12:20,895 [http-nio-8083-exec-2] ==> Parameters: admin(String)
+2018-12-25 10:12:20,898 [http-nio-8083-exec-2] <==      Total: 1
+2018-12-25 10:12:20,912 [http-nio-8083-exec-2] ==>  Preparing: select distinct p.* from sys_permission p inner join sys_role_permission rp on p.id = rp.permissionId inner join sys_role_user ru on ru.roleId = rp.roleId where ru.userId = ? order by p.sort 
+2018-12-25 10:12:20,914 [http-nio-8083-exec-2] ==> Parameters: 1(Long)
+2018-12-25 10:12:20,924 [http-nio-8083-exec-2] <==      Total: 43
+2018-12-25 10:12:21,037 [http-nio-8083-exec-2] ==>  Preparing: insert into t_token(id, val, expireTime, createTime, updateTime) values (?, ?, ?, ?, ?) 
+2018-12-25 10:12:21,040 [http-nio-8083-exec-2] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String), {"accountNonExpired":true,"accountNonLocked":true,"authorities":[{"authority":"sys:user:password"},{"authority":"sys:menu:add"},{"authority":"job:query"},{"authority":"sys:user:add"},{"authority":"generate:edit"},{"authority":"notice:query"},{"authority":"dict:add"},{"authority":"dict:query"},{"authority":"dict:del"},{"authority":"excel:show:datas"},{"authority":"sys:log:query"},{"authority":"sys:file:del"},{"authority":"sys:role:query"},{"authority":"job:add"},{"authority":"sys:role:add"},{"authority":"sys:role:del"},{"authority":"notice:del"},{"authority":"sys:menu:del"},{"authority":"excel:down"},{"authority":"sys:user:query"},{"authority":"sys:file:query"},{"authority":"mail:all:query"},{"authority":"sys:menu:query"},{"authority":"job:del"},{"authority":"notice:add"},{"authority":"mail:send"}],"birthday":899222400000,"createTime":1491808898000,"credentialsNonExpired":true,"email":"","enabled":true,"expireTime":1545711141025,"id":1,"loginTime":1545703941025,"nickname":"管理员","password":"$2a$10$iYM/H7TrSaLs7XyIWQdGwe1xf4cdmt3nwMja6RT0wxG5YY1RjN0EK","permissions":[{"createTime":1545703940918,"css":"fa-users","href":"","id":1,"name":"用户管理","parentId":0,"permission":"","sort":1,"type":1,"updateTime":1545703940918},{"createTime":1545703940918,"css":"fa-user","href":"pages/user/userList.html","id":2,"name":"用户查询","parentId":1,"permission":"","sort":2,"type":1,"updateTime":1545703940918},{"createTime":1545703940918,"css":"fa-pencil-square-o","href":"pages/user/changePassword.html","id":6,"name":"修改密码","parentId":0,"permission":"sys:user:password","sort":4,"type":1,"updateTime":1545703940918},{"createTime":1545703940918,"css":"fa-gears","href":"","id":7,"name":"系统设置","parentId":0,"permission":"","sort":5,"type":1,"updateTime":1545703940918},{"createTime":1545703940918,"css":"fa-cog","href":"pages/menu/menuList.html","id":8,"name":"菜单","parentId":7,"permission":"","sort":6,"type":1,"updateTime":1545703940918},{"createTime":1545703940919,"css":"fa-user-secret","href":"pages/role/roleList.html","id":12,"name":"角色","parentId":7,"permission":"","sort":7,"type":1,"updateTime":1545703940919},{"createTime":1545703940919,"css":"fa-folder-open","href":"pages/file/fileList.html","id":16,"name":"文件管理","parentId":0,"permission":"","sort":8,"type":1,"updateTime":1545703940919},{"createTime":1545703940919,"css":"fa-eye","href":"druid/index.html","id":19,"name":"数据源监控","parentId":0,"permission":"","sort":9,"type":1,"updateTime":1545703940919},{"createTime":1545703940919,"css":"fa-file-pdf-o","href":"swagger-ui.html","id":20,"name":"接口swagger","parentId":0,"permission":"","sort":10,"type":1,"updateTime":1545703940919},{"createTime":1545703940919,"css":"fa-wrench","href":"pages/generate/edit.html","id":21,"name":"代码生成","parentId":0,"permission":"generate:edit","sort":11,"type":1,"updateTime":1545703940919},{"createTime":1545703940919,"css":"fa-book","href":"pages/notice/noticeList.html","id":22,"name":"公告管理","parentId":0,"permission":"","sort":12,"type":1,"updateTime":1545703940919},{"createTime":1545703940920,"css":"fa-reorder","href":"pages/log/logList.html","id":26,"name":"日志查询","parentId":0,"permission":"sys:log:query","sort":13,"type":1,"updateTime":1545703940920},{"createTime":1545703940920,"css":"fa-envelope","href":"pages/mail/mailList.html","id":27,"name":"邮件管理","parentId":0,"permission":"","sort":14,"type":1,"updateTime":1545703940920},{"createTime":1545703940920,"css":"fa-tasks","href":"pages/job/jobList.html","id":30,"name":"定时任务管理","parentId":0,"permission":"","sort":15,"type":1,"updateTime":1545703940920},{"createTime":1545703940920,"css":"fa-arrow-circle-down","href":"pages/excel/sql.html","id":34,"name":"excel导出","parentId":0,"permission":"","sort":16,"type":1,"updateTime":1545703940920},{"createTime":1545703940921,"css":"fa-reddit","href":"pages/dict/dictList.html","id":37,"name":"字典管理","parentId":0,"permission":"","sort":17,"type":1,"updateTime":1545703940921},{"createTime":1545703940922,"css":"","href":"","id":14,"name":"新增","parentId":12,"permission":"sys:role:add","sort":100,"type":2,"updateTime":1545703940922},{"createTime":1545703940922,"css":"","href":"","id":18,"name":"删除","parentId":16,"permission":"sys:file:del","sort":100,"type":2,"updateTime":1545703940922},{"createTime":1545703940922,"css":"","href":"","id":10,"name":"新增","parentId":8,"permission":"sys:menu:add","sort":100,"type":2,"updateTime":1545703940922},{"createTime":1545703940922,"css":"fa-bank","href":"pages/business/businessInfoList.html","id":42,"name":"商户列表","parentId":41,"permission":"","sort":100,"type":1,"updateTime":1545703940922},{"createTime":1545703940922,"css":"","href":"","id":38,"name":"查询","parentId":37,"permission":"dict:query","sort":100,"type":2,"updateTime":1545703940922},{"createTime":1545703940922,"css":"","href":"","id":13,"name":"查询","parentId":12,"permission":"sys:role:query","sort":100,"type":2,"updateTime":1545703940922},{"createTime":1545703940922,"css":"","href":"","id":29,"name":"查询","parentId":27,"permission":"mail:all:query","sort":100,"type":2,"updateTime":1545703940922},{"createTime":1545703940922,"css":"","href":"","id":17,"name":"查询","parentId":16,"permission":"sys:file:query","sort":100,"type":2,"updateTime":1545703940922},{"createTime":1545703940922,"css":"","href":"","id":4,"name":"新增","parentId":2,"permission":"sys:user:add","sort":100,"type":2,"updateTime":1545703940922},{"createTime":1545703940922,"css":"","href":"","id":9,"name":"查询","parentId":8,"permission":"sys:menu:query","sort":100,"type":2,"updateTime":1545703940922},{"createTime":1545703940923,"css":"","href":"","id":25,"name":"删除","parentId":22,"permission":"notice:del","sort":100,"type":2,"updateTime":1545703940923},{"createTime":1545703940923,"css":"fa-cube","href":"","id":41,"name":"商户管理","parentId":0,"permission":"","sort":100,"type":1,"updateTime":1545703940923},{"createTime":1545703940923,"css":"","href":"","id":33,"name":"删除","parentId":30,"permission":"job:del","sort":100,"type":2,"updateTime":1545703940923},{"createTime":1545703940923,"css":"","href":"","id":28,"name":"发送邮件","parentId":27,"permission":"mail:send","sort":100,"type":2,"updateTime":1545703940923},{"createTime":1545703940923,"css":"","href":"","id":3,"name":"查询","parentId":2,"permission":"sys:user:query","sort":100,"type":2,"updateTime":1545703940923},{"createTime":1545703940923,"css":"","href":"","id":24,"name":"添加","parentId":22,"permission":"notice:add","sort":100,"type":2,"updateTime":1545703940923},{"createTime":1545703940923,"css":"","href":"","id":40,"name":"删除","parentId":37,"permission":"dict:del","sort":100,"type":2,"updateTime":1545703940923},{"createTime":1545703940923,"css":"fa-drupal","href":"pages/codeMan/codeManList.html","id":44,"name":"码人列表","parentId":43,"permission":"","sort":100,"type":1,"updateTime":1545703940923},{"createTime":1545703940923,"css":"","href":"","id":32,"name":"新增","parentId":30,"permission":"job:add","sort":100,"type":2,"updateTime":1545703940923},{"createTime":1545703940923,"css":"","href":"","id":36,"name":"页面显示数据","parentId":34,"permission":"excel:show:datas","sort":100,"type":2,"updateTime":1545703940923},{"createTime":1545703940924,"css":"","href":"","id":15,"name":"删除","parentId":12,"permission":"sys:role:del","sort":100,"type":2,"updateTime":1545703940924},{"createTime":1545703940924,"css":"","href":"","id":23,"name":"查询","parentId":22,"permission":"notice:query","sort":100,"type":2,"updateTime":1545703940924},{"createTime":1545703940924,"css":"","href":"","id":11,"name":"删除","parentId":8,"permission":"sys:menu:del","sort":100,"type":2,"updateTime":1545703940924},{"createTime":1545703940924,"css":"fa-graduation-cap","href":"","id":43,"name":"码人管理","parentId":0,"permission":"","sort":100,"type":1,"updateTime":1545703940924},{"createTime":1545703940924,"css":"","href":"","id":31,"name":"查询","parentId":30,"permission":"job:query","sort":100,"type":2,"updateTime":1545703940924},{"createTime":1545703940924,"css":"","href":"","id":35,"name":"导出","parentId":34,"permission":"excel:down","sort":100,"type":2,"updateTime":1545703940924},{"createTime":1545703940924,"css":"","href":"","id":39,"name":"新增","parentId":37,"permission":"dict:add","sort":100,"type":2,"updateTime":1545703940924}],"phone":"","sex":0,"status":1,"telephone":"","token":"8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9","updateTime":1499304019000,"username":"admin"}(String), 2018-12-25 12:12:21.025(Timestamp), 2018-12-25 10:12:21.025(Timestamp), 2018-12-25 10:12:21.025(Timestamp)
+2018-12-25 10:12:21,051 [http-nio-8083-exec-2] <==    Updates: 1
+2018-12-25 10:12:21,058 [taskExecutor-1] ==>  Preparing: insert into sys_logs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2018-12-25 10:12:21,064 [taskExecutor-1] ==> Parameters: 1(Long), 登陆(String), true(Boolean), null
+2018-12-25 10:12:21,070 [taskExecutor-1] <==    Updates: 1
+2018-12-25 10:12:21,162 [http-nio-8083-exec-3] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:12:21,162 [http-nio-8083-exec-3] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:12:21,166 [http-nio-8083-exec-3] <==      Total: 1
+2018-12-25 10:12:21,234 [http-nio-8083-exec-5] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:12:21,234 [http-nio-8083-exec-5] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:12:21,238 [http-nio-8083-exec-5] <==      Total: 1
+2018-12-25 10:12:21,262 [http-nio-8083-exec-9] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:12:21,262 [http-nio-8083-exec-9] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:12:21,267 [http-nio-8083-exec-9] <==      Total: 1
+2018-12-25 10:12:21,275 [http-nio-8083-exec-9] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-12-25 10:12:21,276 [http-nio-8083-exec-9] ==> Parameters: 1(Long)
+2018-12-25 10:12:21,278 [http-nio-8083-exec-9] <==      Total: 1
+2018-12-25 10:12:23,846 [http-nio-8083-exec-10] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:12:23,846 [http-nio-8083-exec-10] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:12:23,850 [http-nio-8083-exec-10] <==      Total: 1
+2018-12-25 10:12:23,884 [http-nio-8083-exec-8] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:12:23,884 [http-nio-8083-exec-8] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:12:23,888 [http-nio-8083-exec-8] <==      Total: 1
+2018-12-25 10:12:23,933 [http-nio-8083-exec-2] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:12:23,934 [http-nio-8083-exec-2] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:12:23,938 [http-nio-8083-exec-2] <==      Total: 1
+2018-12-25 10:12:23,966 [http-nio-8083-exec-2] ==>  Preparing: select count(1) from code_man t 
+2018-12-25 10:12:23,968 [http-nio-8083-exec-2] ==> Parameters: 
+2018-12-25 10:12:23,971 [http-nio-8083-exec-2] <==      Total: 1
+2018-12-25 10:12:23,981 [http-nio-8083-exec-2] ==>  Preparing: select * from code_man t order by man_code asc limit ?, ? 
+2018-12-25 10:12:23,984 [http-nio-8083-exec-2] ==> Parameters: 0(Integer), 10(Integer)
+2018-12-25 10:12:23,987 [http-nio-8083-exec-2] <==      Total: 1
+2018-12-25 10:12:27,645 [http-nio-8083-exec-7] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:12:27,645 [http-nio-8083-exec-7] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:12:27,650 [http-nio-8083-exec-7] <==      Total: 1
+2018-12-25 10:12:27,662 [http-nio-8083-exec-7] ==>  Preparing: select * from code_man t where t.id = ? 
+2018-12-25 10:12:27,663 [http-nio-8083-exec-7] ==> Parameters: 01e66af7015c4995976b52dc68da7e69(String)
+2018-12-25 10:12:27,666 [http-nio-8083-exec-7] <==      Total: 1
+2018-12-25 10:12:32,332 [http-nio-8083-exec-1] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:12:32,332 [http-nio-8083-exec-1] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:12:32,337 [http-nio-8083-exec-1] <==      Total: 1
+2018-12-25 10:12:32,364 [http-nio-8083-exec-1] ==>  Preparing: update code_man t SET man_code = ?, man_name = ?, phone_account = ?, phone_password = ?, credit_quota = ?, surplus_quota = ?, receivables = ?, business_code = ?, status = ?, create_time = ?, update_time = ? where t.id = ? 
+2018-12-25 10:12:32,366 [http-nio-8083-exec-1] ==> Parameters: 20001(String), 测试(String), 3424(String), 2342(String), 100000(BigDecimal), 50000(BigDecimal), 4000(BigDecimal), 1(String), 2(Integer), 2018-12-25 10:12:32.354(Timestamp), 2018-12-25 10:12:32.354(Timestamp), 01e66af7015c4995976b52dc68da7e69(String)
+2018-12-25 10:12:32,372 [http-nio-8083-exec-1] <==    Updates: 1
+2018-12-25 10:12:33,707 [http-nio-8083-exec-1] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:12:33,708 [http-nio-8083-exec-1] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:12:33,713 [http-nio-8083-exec-1] <==      Total: 1
+2018-12-25 10:12:33,746 [http-nio-8083-exec-7] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:12:33,746 [http-nio-8083-exec-7] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:12:33,749 [http-nio-8083-exec-7] <==      Total: 1
+2018-12-25 10:12:33,787 [http-nio-8083-exec-6] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:12:33,788 [http-nio-8083-exec-6] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:12:33,791 [http-nio-8083-exec-6] <==      Total: 1
+2018-12-25 10:12:33,796 [http-nio-8083-exec-6] ==>  Preparing: select count(1) from code_man t 
+2018-12-25 10:12:33,797 [http-nio-8083-exec-6] ==> Parameters: 
+2018-12-25 10:12:33,799 [http-nio-8083-exec-6] <==      Total: 1
+2018-12-25 10:12:33,803 [http-nio-8083-exec-6] ==>  Preparing: select * from code_man t order by man_code asc limit ?, ? 
+2018-12-25 10:12:33,804 [http-nio-8083-exec-6] ==> Parameters: 0(Integer), 10(Integer)
+2018-12-25 10:12:33,808 [http-nio-8083-exec-6] <==      Total: 1
+2018-12-25 10:14:41,781 [http-nio-8083-exec-1] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:14:41,782 [http-nio-8083-exec-1] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:14:41,788 [http-nio-8083-exec-1] <==      Total: 1
+2018-12-25 10:14:41,810 [http-nio-8083-exec-9] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:14:41,811 [http-nio-8083-exec-9] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:14:41,815 [http-nio-8083-exec-9] <==      Total: 1
+2018-12-25 10:14:41,853 [http-nio-8083-exec-2] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:14:41,853 [http-nio-8083-exec-2] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:14:41,857 [http-nio-8083-exec-2] <==      Total: 1
+2018-12-25 10:14:41,861 [http-nio-8083-exec-2] ==>  Preparing: select count(1) from code_man t 
+2018-12-25 10:14:41,862 [http-nio-8083-exec-2] ==> Parameters: 
+2018-12-25 10:14:41,864 [http-nio-8083-exec-2] <==      Total: 1
+2018-12-25 10:14:41,868 [http-nio-8083-exec-2] ==>  Preparing: select * from code_man t order by man_code asc limit ?, ? 
+2018-12-25 10:14:41,868 [http-nio-8083-exec-2] ==> Parameters: 0(Integer), 10(Integer)
+2018-12-25 10:14:41,871 [http-nio-8083-exec-2] <==      Total: 1
+2018-12-25 10:14:43,582 [http-nio-8083-exec-9] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:14:43,582 [http-nio-8083-exec-9] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:14:43,586 [http-nio-8083-exec-9] <==      Total: 1
+2018-12-25 10:14:43,620 [http-nio-8083-exec-6] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:14:43,620 [http-nio-8083-exec-6] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:14:43,623 [http-nio-8083-exec-6] <==      Total: 1
+2018-12-25 10:14:43,641 [http-nio-8083-exec-5] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:14:43,642 [http-nio-8083-exec-5] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:14:43,645 [http-nio-8083-exec-5] <==      Total: 1
+2018-12-25 10:14:43,649 [http-nio-8083-exec-5] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-12-25 10:14:43,649 [http-nio-8083-exec-5] ==> Parameters: 1(Long)
+2018-12-25 10:14:43,651 [http-nio-8083-exec-5] <==      Total: 1
+2018-12-25 10:14:50,898 [http-nio-8083-exec-5] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:14:50,899 [http-nio-8083-exec-5] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:14:50,903 [http-nio-8083-exec-5] <==      Total: 1
+2018-12-25 10:14:50,935 [http-nio-8083-exec-2] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:14:50,935 [http-nio-8083-exec-2] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:14:50,939 [http-nio-8083-exec-2] <==      Total: 1
+2018-12-25 10:14:50,956 [http-nio-8083-exec-6] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:14:50,956 [http-nio-8083-exec-6] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:14:50,960 [http-nio-8083-exec-6] <==      Total: 1
+2018-12-25 10:14:50,967 [http-nio-8083-exec-6] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-12-25 10:14:50,968 [http-nio-8083-exec-6] ==> Parameters: 1(Long)
+2018-12-25 10:14:50,972 [http-nio-8083-exec-6] <==      Total: 1
+2018-12-25 10:15:04,680 [http-nio-8083-exec-1] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:15:04,681 [http-nio-8083-exec-1] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:15:04,685 [http-nio-8083-exec-1] <==      Total: 1
+2018-12-25 10:15:04,715 [http-nio-8083-exec-9] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:15:04,715 [http-nio-8083-exec-9] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:15:04,718 [http-nio-8083-exec-9] <==      Total: 1
+2018-12-25 10:15:04,740 [http-nio-8083-exec-5] ==>  Preparing: select * from t_token t where t.id = ? 
+2018-12-25 10:15:04,740 [http-nio-8083-exec-5] ==> Parameters: 8e57ea5f-1e4b-4ee2-9cbf-a9b6453400c9(String)
+2018-12-25 10:15:04,743 [http-nio-8083-exec-5] <==      Total: 1
+2018-12-25 10:15:04,753 [http-nio-8083-exec-5] ==>  Preparing: select count(1) from sys_logs t left join sys_user u on u.id = t.userId 
+2018-12-25 10:15:04,753 [http-nio-8083-exec-5] ==> Parameters: 
+2018-12-25 10:15:04,756 [http-nio-8083-exec-5] <==      Total: 1
+2018-12-25 10:15:04,759 [http-nio-8083-exec-5] ==>  Preparing: select t.*, u.username, u.nickname from sys_logs t left join sys_user u on u.id = t.userId order by createTime desc limit ?, ? 
+2018-12-25 10:15:04,761 [http-nio-8083-exec-5] ==> Parameters: 0(Integer), 10(Integer)
+2018-12-25 10:15:04,766 [http-nio-8083-exec-5] <==      Total: 10

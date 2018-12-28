@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boot.security.server.dao.CodeManDao">
+	<resultMap id="BaseResultMap" type="com.boot.security.server.model.CodeMan" >
+		<result column="id" property="id" jdbcType="VARCHAR" />
+		<result column="man_code" property="manCode" jdbcType="VARCHAR" />
+		<result column="man_name" property="manName" jdbcType="VARCHAR" />
+		<result column="phone_account" property="phoneAccount" jdbcType="VARCHAR" />
+		<result column="phone_password" property="phonePassword" jdbcType="VARCHAR" />
+		<result column="credit_quota" property="creditQuota" jdbcType="DECIMAL" />
+		<result column="surplus_quota" property="surplusQuota" jdbcType="DECIMAL" />
+		<result column="receivables" property="receivables" jdbcType="DECIMAL" />
+		<result column="business_code" property="businessCode" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<sql id="where">
+		<where>
+			<if test="params.id != null and params.id != ''">
+				and id = #{params.id} 
+			</if>
+			<if test="params.manCode != null and params.manCode != ''">
+				and man_code = #{params.manCode} 
+			</if>
+			<if test="params.manName != null and params.manName != ''">
+				and man_name = #{params.manName} 
+			</if>
+			<if test="params.phoneAccount != null and params.phoneAccount != ''">
+				and phone_account = #{params.phoneAccount}
+			</if>
+			<if test="params.creditQuota != null and params.creditQuota != ''">
+				and credit_quota = #{params.creditQuota} 
+			</if>
+			<if test="params.surplusQuota != null and params.surplusQuota != ''">
+				and surplus_quota = #{params.surplusQuota} 
+			</if>
+			<if test="params.receivables != null and params.receivables != ''">
+				and receivables = #{params.receivables} 
+			</if>
+			<if test="params.businessCode != null and params.businessCode != ''">
+				and business_code = #{params.businessCode} 
+			</if>
+			<if test="params.status != null and params.status != ''">
+				and status = #{params.status} 
+			</if>
+			<if test="params.createTime != null and params.createTime != ''">
+				and create_time = #{params.createTime} 
+			</if>
+			<if test="params.updateTime != null and params.updateTime != ''">
+				and update_time = #{params.updateTime} 
+			</if>
+		
+		</where>
+	</sql>
+
+	<select id="count" resultType="int">
+		select count(1) from code_man t
+		<include refid="where" />
+	</select>
+
+	<select id="list" resultType="CodeMan">
+		select * from code_man t
+		<include refid="where" />
+		${params.orderBy}
+		limit #{offset}, #{limit}
+	</select>
+
+	<update id="update">
+		update code_man t
+		<set>
+			<if test="manCode != null">
+				man_code = #{manCode}, 
+			</if>
+			<if test="manName != null">
+				man_name = #{manName}, 
+			</if>
+			<if test="phoneAccount != null">
+				phone_account = #{phoneAccount},
+			</if>
+			<if test="phonePassword != null">
+				phone_password = #{phonePassword},
+			</if>
+			<if test="creditQuota != null">
+				credit_quota = #{creditQuota}, 
+			</if>
+			<if test="surplusQuota != null">
+				surplus_quota = #{surplusQuota}, 
+			</if>
+			<if test="receivables != null">
+				receivables = #{receivables}, 
+			</if>
+			<if test="businessCode != null">
+				business_code = #{businessCode}, 
+			</if>
+			<if test="status != null">
+				status = #{status}, 
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime}, 
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime}, 
+			</if>
+
+		</set>
+
+		where t.id = #{id}
+	</update>
+
+</mapper>

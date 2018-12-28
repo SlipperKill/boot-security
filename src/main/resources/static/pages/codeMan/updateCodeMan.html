@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="screen" href="../../css/bootstrap.min.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<form class="form-horizontal" onsubmit="return false" id="form">
+		<fieldset>
+			<input type="hidden" id="id" name="id">
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>码人code</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='码人code' type='text' name='manCode' id='manCode' data-bv-notempty='true' data-bv-notempty-message='码人code 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>姓名</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='姓名' type='text' name='manName' id='manName' data-bv-notempty='true' data-bv-notempty-message='姓名 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>手机端账号</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='手机端账号' type='text' name='phoneAccount' id='phoneAccount' data-bv-notempty='true' data-bv-notempty-message='手机端账号 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>手机端密码</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='手机端密码' type='text' name='phonePassword' id='phonePassword' data-bv-notempty='true' data-bv-notempty-message='手机端密码 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>授权额度</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='授权额度' type='text' name='creditQuota' id='creditQuota' data-bv-notempty='true' data-bv-notempty-message='授权额度 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>剩余额度</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='剩余额度' type='text' name='surplusQuota' id='surplusQuota' data-bv-notempty='true' data-bv-notempty-message='剩余额度 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>累计收款</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='累计收款' type='text' name='receivables' id='receivables' data-bv-notempty='true' data-bv-notempty-message='累计收款 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>服务商户</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='服务商户' type='text' name='businessCode' id='businessCode' data-bv-notempty='true' data-bv-notempty-message='服务商户 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>状态</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='状态' type='text' name='status' id='status' data-bv-notempty='true' data-bv-notempty-message='status 不能为空'>
+				</div>
+			</div>
+
+
+
+			<div class="form-actions">
+				<div class="row" align="center">
+					<div class="col-md-12">
+					    <button class="btn btn-primary" onclick="location.href='codeManList.html'">返回</button>
+						<button class="btn btn-primary" type="submit" onclick="update()">
+							<i class="fa fa-save"></i> 保存
+						</button>
+					</div>
+				</div>
+			</div>
+
+		</fieldset>
+	</form>
+</div>
+	<script type="text/javascript" src="../../js/libs/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="../../js/jq.js"></script>
+	<script type="text/javascript" src="../../js/plugin/bootstrapvalidator/bootstrapValidator.min.js"></script>
+	<script type="text/javascript" src="../../js/common.js"></script>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript">
+		layui.use(['layer','laydate'], function(){
+		    var layer = layui.layer;
+		});
+		
+		initData();
+		
+		function initData(){
+			var id = getUrlParam("id");
+			if(id != ""){
+				$.ajax({
+					type : 'get',
+					url : '/codeMans/'+id,
+					async : false,
+					success : function(data) {
+						$('#id').val(data.id);
+						$('#manCode').val(data.manCode);
+						$('#manName').val(data.manName);
+                        $('#phoneAccount').val(data.phoneAccount);
+                        $('#phonePassword').val(data.phonePassword);
+						$('#creditQuota').val(data.creditQuota);
+						$('#surplusQuota').val(data.surplusQuota);
+						$('#receivables').val(data.receivables);
+						$('#businessCode').val(data.businessCode);
+						$('#status').val(data.status);
+						$('#createTime').val(data.createTime);
+						$('#updateTime').val(data.updateTime);
+
+					}
+				});
+			}
+		}
+
+		function update() {
+			$('#form').bootstrapValidator();
+			var bootstrapValidator = $("#form").data('bootstrapValidator');
+			bootstrapValidator.validate();
+		    if(!bootstrapValidator.isValid()){
+			   return;
+		    }
+		    
+		    var formdata = $("#form").serializeObject();
+
+			$.ajax({
+				type : 'put',
+				url : '/codeMans',
+				contentType: "application/json; charset=utf-8",  
+				data : JSON.stringify(formdata),
+				success : function(data) {
+					layer.msg("修改成功", {shift: -1, time: 1000}, function(){
+                        location.href = "codeManList.html";
+                    });
+				}
+			});
+		}
+		
+	</script>
+</body>
+</html>

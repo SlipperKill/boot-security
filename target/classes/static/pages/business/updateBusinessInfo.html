@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="screen" href="../../css/bootstrap.min.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<form class="form-horizontal" onsubmit="return false" id="form">
+		<fieldset>
+			<input type="hidden" id="id" name="id">
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>商户号</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='商户号' type='text' name='businessCode' id='businessCode' data-bv-notempty='true' data-bv-notempty-message='商户号 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>商户名称</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='商户名称' type='text' name='businessName' id='businessName' data-bv-notempty='true' data-bv-notempty-message='商户名称 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>登录密码</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='登录密码' type='text' name='loginPassword' id='loginPassword' data-bv-notempty='true' data-bv-notempty-message='登录密码 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>手机端账号</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='手机端账号' type='text' name='phoneAccount' id='phoneAccount' data-bv-notempty='true' data-bv-notempty-message='手机端账号 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>手机端密码</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='手机端密码' type='text' name='phonePassword' id='phonePassword' data-bv-notempty='true' data-bv-notempty-message='手机端密码 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>支付宝手续费</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='支付宝手续费' type='text' name='aliPayPoundage' id='aliPayPoundage' data-bv-notempty='true' data-bv-notempty-message='支付宝手续费 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>微信手续费</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='微信手续费' type='text' name='wechatPoundage' id='wechatPoundage' data-bv-notempty='true' data-bv-notempty-message='微信手续费 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>最小支付金额</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='最小支付金额' type='text' name='minAmount' id='minAmount' data-bv-notempty='true' data-bv-notempty-message='最小支付金额 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>最大支付金额</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='最大支付金额' type='text' name='maxAmount' id='maxAmount' data-bv-notempty='true' data-bv-notempty-message='最大支付金额 不能为空'>
+				</div>
+			</div>
+
+
+
+			<div class="form-actions">
+				<div class="row" align="center">
+					<div class="col-md-12">
+					    <button class="btn btn-primary" onclick="location.href='businessInfoList.html'">返回</button>
+						<button class="btn btn-primary" type="submit" onclick="update()">
+							<i class="fa fa-save"></i> 保存
+						</button>
+					</div>
+				</div>
+			</div>
+
+		</fieldset>
+	</form>
+</div>
+	<script type="text/javascript" src="../../js/libs/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="../../js/jq.js"></script>
+	<script type="text/javascript" src="../../js/plugin/bootstrapvalidator/bootstrapValidator.min.js"></script>
+	<script type="text/javascript" src="../../js/common.js"></script>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript">
+		layui.use(['layer','laydate'], function(){
+		    var layer = layui.layer;
+		});
+		
+		initData();
+		
+		function initData(){
+			var id = getUrlParam("id");
+			if(id != ""){
+				$.ajax({
+					type : 'get',
+					url : '/businessInfos/'+id,
+					async : false,
+					success : function(data) {
+						$('#id').val(data.id);
+						$('#businessCode').val(data.businessCode);
+						$('#businessName').val(data.businessName);
+						$('#loginPassword').val(data.loginPassword);
+						$('#phoneAccount').val(data.phoneAccount);
+						$('#phonePassword').val(data.phonePassword);
+						$('#aliPayPoundage').val(data.aliPayPoundage);
+						$('#wechatPoundage').val(data.wechatPoundage);
+						$('#minAmount').val(data.minAmount);
+						$('#maxAmount').val(data.maxAmount);
+						$('#createTime').val(data.createTime);
+						$('#updateTime').val(data.updateTime);
+
+					}
+				});
+			}
+		}
+
+		function update() {
+			$('#form').bootstrapValidator();
+			var bootstrapValidator = $("#form").data('bootstrapValidator');
+			bootstrapValidator.validate();
+		    if(!bootstrapValidator.isValid()){
+			   return;
+		    }
+		    
+		    var formdata = $("#form").serializeObject();
+
+			$.ajax({
+				type : 'put',
+				url : '/businessInfos',
+				contentType: "application/json; charset=utf-8",  
+				data : JSON.stringify(formdata),
+				success : function(data) {
+					layer.msg("修改成功", {shift: -1, time: 1000}, function(){
+                        location.href = "businessInfoList.html";
+                    });
+				}
+			});
+		}
+		
+	</script>
+</body>
+</html>
